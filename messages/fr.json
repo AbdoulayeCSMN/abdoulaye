@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "projects": "Projets",
+    "services": "Services",
+    "notes": "Notes",
+    "about": "À propos",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "home": {
+    "greeting": "Bonjour, je suis",
+    "tagline": "Développeur passionné, créateur d'expériences web modernes et élégantes. J'aime transformer des idées en projets utiles, performants et intelligents.",
+    "cta_projects": "Voir mes projets",
+    "cta_contact": "Me contacter",
+    "about_text": "Je suis un développeur polyvalent spécialisé en Next.js, React, Node.js, Python, R et les interfaces modernes. J'adore concevoir des expériences utilisateur fluides et intégrer l'IA dans des projets concrets."
+  },
+  "projects": {
+    "title": "Mes Réalisations",
+    "subtitle": "Découvrez une sélection de projets sur lesquels j'ai travaillé, allant de solutions web complètes à des applications innovantes.",
+    "badge": "Portfolio Projets",
+    "filter_all": "Tous",
+    "filter_featured": "En vedette",
+    "filter_frontend": "Frontend",
+    "filter_backend": "Backend",
+    "filter_fullstack": "Fullstack",
+    "filter_design": "Design",
+    "filter_mobile": "Mobile",
+    "status_live": "En ligne",
+    "status_completed": "Terminé",
+    "status_in_progress": "En cours",
+    "btn_code": "Code",
+    "btn_visit": "Voir le projet",
+    "btn_details": "Détails",
+    "stats_completed": "Projets complétés",
+    "stats_experience": "Années d'expérience",
+    "stats_clients": "Clients satisfaits",
+    "stats_technologies": "Technologies maîtrisées",
+    "no_projects": "Aucun projet dans cette catégorie pour le moment."
+  },
+  "contact": {
+    "title": "Contactez-moi",
+    "subtitle": "Un projet en tête ? Parlons-en.",
+    "name": "Nom complet",
+    "email": "Adresse email",
+    "phone": "Téléphone",
+    "subject": "Sujet",
+    "message": "Message",
+    "send": "Envoyer",
+    "success": "Message envoyé avec succès !",
+    "error": "Une erreur est survenue. Réessayez."
+  },
+  "footer": {
+    "tagline": "Créons ensemble quelque chose d'extraordinaire",
+    "quick_links": "Liens rapides",
+    "services_label": "Services",
+    "contact_label": "Contact",
+    "rights": "Tous droits réservés"
+  },
+  "admin": {
+    "login_title": "Connexion Admin",
+    "username": "Nom d'utilisateur",
+    "password": "Mot de passe",
+    "sign_in": "Se connecter",
+    "signing_in": "Connexion...",
+    "logout": "Déconnexion",
+    "dashboard": "Tableau de bord",
+    "projects": "Projets",
+    "courses": "Cours",
+    "messages": "Messages",
+    "add_project": "Ajouter un projet",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "publish": "Publier",
+    "unpublish": "Dépublier",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "confirm_delete": "Êtes-vous sûr de vouloir supprimer ceci ?",
+    "invalid_credentials": "Nom d'utilisateur ou mot de passe incorrect"
+  }
+}
