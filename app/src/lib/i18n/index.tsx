@@ -7,7 +7,7 @@
  */
 
 import { createContext, useContext, ReactNode } from 'react';
-import type en from '../../../messages/en.json';
+import type en from '../../../../messages/en.json';
 
 export type Locale = 'fr' | 'en';
 export type Messages = typeof en;
