@@ -17,12 +17,29 @@ import {
   Shield,
   TrendingUp,
   BarChart,
-  Target
+  Target,
+  Brain,
 } from "lucide-react"
 
 const services = [
   {
     id: 1,
+    title: "IA & Data Science",
+    description: "Machine learning, modélisation prédictive et analyse de données pour transformer vos données en décisions concrètes.",
+    icon: <Brain className="h-8 w-8" />,
+    features: [
+      "Modèles de classification & régression (scikit-learn, PyTorch)",
+      "Détection d'anomalies et maintenance prédictive",
+      "Agents conversationnels & NLP",
+      "Pipelines de données (pandas, NumPy)",
+      "Architectures API pour servir des modèles (FastAPI)"
+    ],
+    price: "Sur devis",
+    popular: true,
+    color: "from-violet-500 to-indigo-500",
+  },
+  {
+    id: 2,
     title: "Développement Web",
     description: "Sites vitrines, applications web complexes et solutions sur mesure avec les dernières technologies.",
     icon: <Code className="h-8 w-8" />,
@@ -34,11 +51,11 @@ const services = [
       "Tests automatisés"
     ],
     price: "Sur devis",
-    popular: true,
+    popular: false,
     color: "from-blue-500 to-cyan-500",
   },
   {
-    id: 2,
+    id: 3,
     title: "Design UI/UX",
     description: "Interfaces intuitives et esthétiques qui captivent vos utilisateurs et améliorent l'engagement.",
     icon: <Palette className="h-8 w-8" />,
@@ -54,7 +71,7 @@ const services = [
     color: "from-purple-500 to-pink-500",
   },
   {
-    id: 3,
+    id: 4,
     title: "Développement Backend",
     description: "APIs robustes, bases de données optimisées et architectures cloud scalables.",
     icon: <Server className="h-8 w-8" />,
@@ -70,7 +87,7 @@ const services = [
     color: "from-green-500 to-emerald-500",
   },
   {
-    id: 4,
+    id: 5,
     title: "Applications Mobile",
     description: "Applications iOS et Android natives ou cross-platform pour toucher votre audience mobile.",
     icon: <Smartphone className="h-8 w-8" />,
@@ -82,11 +99,11 @@ const services = [
       "Stores d'applications"
     ],
     price: "Sur devis",
-    popular: true,
+    popular: false,
     color: "from-orange-500 to-red-500",
   },
   {
-    id: 5,
+    id: 6,
     title: "SEO & Performance",
     description: "Optimisation technique et stratégique pour améliorer votre visibilité et vos performances.",
     icon: <Search className="h-8 w-8" />,
@@ -102,7 +119,7 @@ const services = [
     color: "from-yellow-500 to-amber-500",
   },
   {
-    id: 6,
+    id: 7,
     title: "Consulting Tech",
     description: "Accompagnement stratégique pour vos projets digitaux et transformation technologique.",
     icon: <Users className="h-8 w-8" />,

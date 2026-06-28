@@ -6,6 +6,7 @@ const poolConfig: PoolConfig = {
   user: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DB,
+  ssl: process.env.POSTGRES_SSL === 'true' ? { rejectUnauthorized: false } : undefined,
   max: 5,
   min: 0,
   connectionTimeoutMillis: 15000,

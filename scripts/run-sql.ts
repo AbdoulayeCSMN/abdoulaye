@@ -28,6 +28,7 @@ async function main() {
     user:     process.env.POSTGRES_USER,
     password: process.env.POSTGRES_PASSWORD,
     database: process.env.POSTGRES_DB,
+    ssl:      process.env.POSTGRES_SSL === 'true' ? { rejectUnauthorized: false } : undefined,
   });
 
   await pool.query(sql);

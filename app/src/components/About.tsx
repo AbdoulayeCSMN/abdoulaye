@@ -5,14 +5,9 @@ import { Badge } from '@components/ui/badge';
 import {
   User, Briefcase, Mail, Calendar,
   Code, Palette, Server, Globe, Target,
-  Heart, Trophy, Users, Clock,
+  Heart, Trophy, Users, Clock, GraduationCap, Languages,
 } from 'lucide-react';
 import Link from 'next/link';
-
-/**
- * About page — fill in your real experience in the `experiences` array below.
- * The skills array is already real. Fake company names have been removed.
- */
 
 const skills = [
   { name: 'React / Next.js',          level: 95, icon: <Code    className="h-4 w-4" /> },
@@ -23,20 +18,37 @@ const skills = [
   { name: 'Product Strategy',         level: 85, icon: <Target  className="h-4 w-4" /> },
 ];
 
-//  Professional experience
+// Professional experience
 const experiences: { year: string; role: string; company: string; description: string }[] = [
-  // Example:
-  // {
-  //   year: '2022 – Présent',
-  //   role: 'Développeur Fullstack',
-  //   company: 'Nom de l'entreprise',
-  //   description: 'Description de votre rôle et de vos réalisations.',
-  // },
+  {
+    year: '3 mois',
+    role: 'Stagiaire — Data Science / Machine Learning',
+    company: 'Technocolabs (startup, Inde) — à distance',
+    description: "Prédiction de la faillite d'entreprises : développement de modèles de classification multiclasse du risque (SVM et Random Forest) à partir du jeu de données « companies », incluant préparation des données et entraînement des modèles.",
+  },
+];
+
+const education: { year: string; degree: string; school: string; description: string }[] = [
+  {
+    year: '4ᵉ année (2ᵉ année cycle ingénieur)',
+    degree: 'Cycle ingénieur — filière IATD-SI',
+    school: 'ENSAM Meknès — Université Moulay Ismaïl',
+    description: "Intelligence Artificielle et Technologies de Données — Sciences de l'Ingénieur. Bagage antérieur en génie mécanique et dessin technique (niveau diplôme).",
+  },
+];
+
+const languages = [
+  { name: 'Français', level: 'Courant, langue de travail' },
+  { name: 'Anglais', level: 'Très bon à l’écrit, intermédiaire à l’oral' },
+  { name: 'Haoussa', level: 'Langue maternelle' },
+  { name: 'Zarma', level: 'Langue maternelle' },
 ];
 
 const techStack = [
-  'React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js',
-  'Python', 'R', 'PostgreSQL', 'Docker', 'Git', 'Figma', 'AWS',
+  'Python', 'Rust', 'C', 'C++', 'TypeScript', 'JavaScript', 'Java', 'R', 'Julia',
+  'PyTorch', 'scikit-learn', 'pandas', 'NumPy',
+  'FastAPI', 'Streamlit', 'Next.js', 'React', 'Node.js / Express',
+  'PostgreSQL', 'TimescaleDB', 'Docker', 'Git', 'Linux',
 ];
 
 export default function About() {
@@ -58,7 +70,7 @@ export default function About() {
               <CardContent className="p-6">
                 <div className="text-center mb-6">
                   <h1 className="text-3xl font-bold">Abdoulaye</h1>
-                  <p className="text-primary font-medium mt-2">Développeur Fullstack & Designer</p>
+                  <p className="text-primary font-medium mt-2">Élève-ingénieur IA & Technologies de Données</p>
                   <p className="text-sm text-muted-foreground mt-1">Meknès, Maroc</p>
                 </div>
 
@@ -67,21 +79,21 @@ export default function About() {
                     <Briefcase className="h-4 w-4 text-primary" />
                     <div>
                       <p className="text-sm text-muted-foreground">Expérience</p>
-                      <p className="font-medium">6+ années</p>
+                      <p className="font-medium">4+ années</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <Trophy className="h-4 w-4 text-primary" />
                     <div>
                       <p className="text-sm text-muted-foreground">Projets complétés</p>
-                      <p className="font-medium">50+</p>
+                      <p className="font-medium">18+</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <Users className="h-4 w-4 text-primary" />
                     <div>
                       <p className="text-sm text-muted-foreground">Clients satisfaits</p>
-                      <p className="font-medium">35+</p>
+                      <p className="font-medium">4+</p>
                     </div>
                   </div>
                 </div>
@@ -111,13 +123,14 @@ export default function About() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-lg">
-                  Passionné par la création d&apos;expériences digitales exceptionnelles, je combine
-                  expertise technique et sensibilité design pour transformer des idées en produits innovants.
+                  Élève-ingénieur en 4ᵉ année à l&apos;ENSAM Meknès (Université Moulay Ismaïl), filière
+                  Intelligence Artificielle et Technologies de Données — Sciences de l&apos;Ingénieur.
                 </p>
                 <p className="text-muted-foreground">
-                  Spécialisé en Next.js, React, Node.js, Python et R, j&apos;accompagne startups et
-                  entreprises dans la réalisation de leurs projets digitaux, de la conception à la
-                  mise en production.
+                  Je conçois et développe des projets concrets, du machine learning et de l&apos;analyse de
+                  données aux systèmes bas niveau (conception d&apos;un langage de programmation et de son
+                  gestionnaire de paquets), en passant par les plateformes SaaS et la réalité augmentée.
+                  Je recherche actuellement un stage en IA, science des données ou développement logiciel.
                 </p>
               </CardContent>
             </Card>
@@ -197,6 +210,57 @@ export default function About() {
                     ))}
                   </div>
                 )}
+              </CardContent>
+            </Card>
+
+            {/* Formation */}
+            <Card className="border-2">
+              <CardHeader>
+                <CardTitle className="text-2xl flex items-center gap-2">
+                  <GraduationCap className="h-6 w-6 text-primary" />
+                  Formation
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-8">
+                  {education.map((edu, index) => (
+                    <div key={index} className="relative pl-8">
+                      <div className="absolute left-0 top-0 w-3 h-3 bg-primary rounded-full" />
+                      {index < education.length - 1 && (
+                        <div className="absolute left-[5px] top-3 bottom-0 w-0.5 bg-primary/20" />
+                      )}
+                      <div className="space-y-1">
+                        <div className="flex items-center gap-2">
+                          <Calendar className="h-4 w-4 text-muted-foreground" />
+                          <span className="text-sm font-medium text-primary">{edu.year}</span>
+                        </div>
+                        <h3 className="text-xl font-semibold">{edu.degree}</h3>
+                        <p className="text-primary">{edu.school}</p>
+                        <p className="text-muted-foreground">{edu.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Langues */}
+            <Card className="border-2">
+              <CardHeader>
+                <CardTitle className="text-2xl flex items-center gap-2">
+                  <Languages className="h-6 w-6 text-primary" />
+                  Langues
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {languages.map((lang) => (
+                    <div key={lang.name} className="flex items-center justify-between p-3 rounded-lg border">
+                      <span className="font-medium">{lang.name}</span>
+                      <span className="text-sm text-muted-foreground">{lang.level}</span>
+                    </div>
+                  ))}
+                </div>
               </CardContent>
             </Card>
 

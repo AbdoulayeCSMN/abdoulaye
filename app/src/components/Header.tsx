@@ -44,6 +44,7 @@ export default function PortfolioHeader() {
       label: t('services'),
       to: href('/services'),
       items: [
+        { label: 'IA & Data Science',  to: href('/services'), description: 'Machine learning et analyse de données' },
         { label: 'Développement Web',  to: href('/services'), description: 'Sites et applications web modernes' },
         { label: 'Design UI/UX',       to: href('/services'), description: 'Interfaces intuitives et esthétiques' },
         { label: 'Consulting',         to: href('/services'), description: 'Conseils et stratégie digitale' },

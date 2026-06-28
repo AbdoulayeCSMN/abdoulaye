@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import { Button } from '@components/ui/button';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
-import {FaInstagram, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { Mail, Phone, MapPin, ArrowUp } from 'lucide-react';
 import { Separator } from '@components/ui/separator';
 import { useTranslations, useLocale } from '@lib/i18n';
@@ -32,11 +32,10 @@ export default function PortfolioFooter() {
   ];
 
   const socialLinks = [
-    { platform: 'GitHub',    url: 'https://github.com/AbdoulayeCSMN',    icon: <FaGithub    className="h-5 w-5" /> },
-    { platform: 'LinkedIn',  url: 'https://linkedin.com',  icon: <FaLinkedin  className="h-5 w-5" /> },
-    { platform: 'Twitter',   url: 'https://twitter.com',   icon: <FaXTwitter   className="h-5 w-5" /> },
-    { platform: 'Instagram', url: 'https://instagram.com', icon: <FaInstagram className="h-5 w-5" /> },
-  
+    { platform: 'GitHub (AbdoulayeCSMN)', url: 'https://github.com/AbdoulayeCSMN', icon: <FaGithub className="h-5 w-5" /> },
+    { platform: 'GitHub (OrlCheetah)',    url: 'https://github.com/OrlCheetah',    icon: <FaGithub className="h-5 w-5" /> },
+    { platform: 'LinkedIn',               url: 'https://www.linkedin.com/in/abdoulaye-chaibou-26bb963aa', icon: <FaLinkedin className="h-5 w-5" /> },
+    { platform: 'Twitter / X',             url: 'https://x.com/TechAbdoulaye', icon: <FaXTwitter className="h-5 w-5" /> },
   ];
 
   return (
@@ -64,8 +63,8 @@ export default function PortfolioFooter() {
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-muted-foreground" />
-                <a href="tel:+212786220346" className="text-sm hover:text-primary transition-colors">
-                  +212 786 220 346
+                <a href="tel:+212710970324" className="text-sm hover:text-primary transition-colors">
+                  +212 7 10 97 03 24
                 </a>
               </div>
               <div className="flex items-center space-x-3">

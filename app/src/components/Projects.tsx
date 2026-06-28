@@ -279,9 +279,9 @@ export default function ProjectsPage() {
         {/* Stats */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
-            { label: t('stats_completed'),    value: '50+', Icon: CheckCircle },
-            { label: t('stats_experience'),   value: '6+',  Icon: CalendarIcon },
-            { label: t('stats_clients'),      value: '35+', Icon: UsersIcon },
+            { label: t('stats_completed'),    value: '18+', Icon: CheckCircle },
+            { label: t('stats_experience'),   value: '4+',  Icon: CalendarIcon },
+            { label: t('stats_clients'),      value: '4+',  Icon: UsersIcon },
             { label: t('stats_technologies'), value: '25+', Icon: CodeIcon },
           ].map(({ label, value, Icon }) => (
             <Card key={label} className="text-center">
