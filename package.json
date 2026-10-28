@@ -11,7 +11,13 @@
     "db:seed:projects": "tsx scripts/run-sql.ts scripts/seed-projects.sql && tsx scripts/run-sql.ts scripts/seed-projects-batch2.sql",
     "db:deploy": "npm run db:schema && npm run db:migrate:profile && npm run db:seed:projects",
     "db:migrate:profile": "tsx scripts/run-sql.ts scripts/migrate-002-profile.sql && tsx scripts/run-sql.ts scripts/seed-profile.sql",
-    "db:import-cvs": "tsx scripts/import-cvs.ts cv_seed"
+    "db:import-cvs": "tsx scripts/import-cvs.ts cv_seed",
+    "db:reset": "tsx scripts/reset-db.ts",
+    "db:create-admin": "tsx scripts/create-admin.ts",
+    "prod:db:reset": "tsx --env-file=.env.production scripts/reset-db.ts",
+    "prod:db:deploy": "tsx --env-file=.env.production scripts/run-sql.ts app/schema.sql && tsx --env-file=.env.production scripts/run-sql.ts scripts/migrate-002-profile.sql && tsx --env-file=.env.production scripts/run-sql.ts scripts/seed-profile.sql && tsx --env-file=.env.production scripts/run-sql.ts scripts/seed-projects.sql && tsx --env-file=.env.production scripts/run-sql.ts scripts/seed-projects-batch2.sql",
+    "prod:db:import-cvs": "tsx --env-file=.env.production scripts/import-cvs.ts cv_seed",
+    "prod:create-admin": "tsx --env-file=.env.production scripts/create-admin.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

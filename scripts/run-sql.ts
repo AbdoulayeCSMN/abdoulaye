@@ -22,6 +22,7 @@ if (!file) {
 async function main() {
   const sql = readFileSync(file, 'utf-8');
 
+  console.log(`Base cible : ${process.env.POSTGRES_HOST}:${process.env.POSTGRES_PORT ?? 5432}/${process.env.POSTGRES_DB}`);
   const pool = new Pool({
     host:     process.env.POSTGRES_HOST,
     port:     process.env.POSTGRES_PORT ? parseInt(process.env.POSTGRES_PORT) : 5432,
