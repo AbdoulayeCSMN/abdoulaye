@@ -10,6 +10,7 @@ export default function proxy(request: NextRequest) {
   if (
     pathname.startsWith('/admin') ||
     pathname.startsWith('/api') ||
+    pathname.startsWith('/cv/') ||
     pathname.startsWith('/_next') ||
     pathname.includes('.')
   ) {

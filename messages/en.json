@@ -10,14 +10,14 @@
   },
   "home": {
     "greeting": "Hello, I'm",
-    "tagline": "Passionate developer, creator of modern and elegant web experiences. I love turning ideas into useful, high-performance, and intelligent projects.",
+    "tagline": "Engineering student in AI & Data Technologies. I build machine-learning models and expose them through APIs, from prototype to deployable service.",
     "cta_projects": "View my projects",
     "cta_contact": "Contact me",
-    "about_text": "I am a versatile developer specialized in Next.js, React, Node.js, Python, R and modern interfaces. I love crafting smooth user experiences and integrating AI into real-world projects."
+    "about_text": "5th-year (final year) engineering student (IATD-SI, ENSAM Meknès). Machine learning, MLOps and full-stack development: prediction, anomaly detection, recommendation, reinforcement learning and NLP. Looking for a final-year internship from February 2027."
   },
   "projects": {
     "title": "My Work",
-    "subtitle": "Explore a selection of projects I have worked on, ranging from complete web solutions to innovative applications.",
+    "subtitle": "Explore a selection of projects I have worked on, ranging from complete web solutions to artificial intelligence and data science applications.",
     "badge": "Project Portfolio",
     "filter_all": "All",
     "filter_featured": "Featured",
@@ -32,15 +32,13 @@
     "btn_code": "Code",
     "btn_visit": "View Project",
     "btn_details": "Details",
-    "stats_completed": "Completed Projects",
-    "stats_experience": "Years of Experience",
-    "stats_clients": "Happy Clients",
-    "stats_technologies": "Technologies Mastered",
-    "no_projects": "No projects in this category yet."
+    "stats_completed": "Projects shown",
+    "no_projects": "No projects in this category yet.",
+    "stats_in_progress": "Projects in progress"
   },
   "contact": {
     "title": "Contact Me",
-    "subtitle": "Have a project in mind? Let's talk.",
+    "subtitle": "Have a project in mind? Looking for a Machine Learning or MLOps internship? Let's talk.",
     "name": "Full name",
     "email": "Email address",
     "phone": "Phone number",
@@ -51,7 +49,7 @@
     "error": "An error occurred. Please try again."
   },
   "footer": {
-    "tagline": "Let's create something extraordinary together",
+    "tagline": "Let's build useful and robust AI solutions together",
     "quick_links": "Quick Links",
     "services_label": "Services",
     "contact_label": "Contact",

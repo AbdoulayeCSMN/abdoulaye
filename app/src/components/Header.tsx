@@ -37,22 +37,11 @@ export default function PortfolioHeader() {
   // Build locale-aware href
   const href = (path: string) => `/${locale}${path}`
 
-  const navItems = [
+  const navItems: { label: string; to: string; items?: { label: string; to: string; description: string }[] }[] = [
     { label: t('home'),     to: href('/') },
     { label: t('projects'), to: href('/projects') },
-    {
-      label: t('services'),
-      to: href('/services'),
-      items: [
-        { label: 'IA & Data Science',  to: href('/services'), description: 'Machine learning et analyse de données' },
-        { label: 'Développement Web',  to: href('/services'), description: 'Sites et applications web modernes' },
-        { label: 'Design UI/UX',       to: href('/services'), description: 'Interfaces intuitives et esthétiques' },
-        { label: 'Consulting',         to: href('/services'), description: 'Conseils et stratégie digitale' },
-      ],
-    },
     { label: t('notes'), to: href('/notes') },
     { label: t('about'), to: href('/about') },
-    { label: t('blog'),  to: href('/blog') },
   ]
 
   React.useEffect(() => {
@@ -63,15 +52,18 @@ export default function PortfolioHeader() {
 
   return (
     <header className={cn(
-      'w-full z-50 transition-all duration-300 fixed top-0 left-0 right-0',
+      'w-full z-50 transition-colors duration-200 fixed top-0 left-0 right-0 border-b',
       isScrolled
-        ? 'bg-background/95 backdrop-blur-md border-b shadow-sm'
-        : 'bg-background/80 backdrop-blur-sm',
+        ? 'bg-background/95 backdrop-blur-md border-border'
+        : 'bg-background/80 backdrop-blur-sm border-transparent',
     )}>
-      <div className="container mx-auto px-4 h-16 lg:h-20 flex items-center justify-between">
+      <div className="container mx-auto px-4 h-14 lg:h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href={href('/')} className="font-bold text-xl tracking-tight hover:text-primary transition-colors">
-          ABDOULAYE
+        <Link
+          href={href('/')}
+          className="font-mono-tight text-sm lg:text-base text-muted-foreground hover:text-primary transition-colors"
+        >
+          <span className="text-primary">~</span>/abdoulaye
         </Link>
 
         {/* Desktop nav */}
@@ -82,7 +74,16 @@ export default function PortfolioHeader() {
                 <NavigationMenuItem key={item.to}>
                   {item.items ? (
                     <>
-                      <NavigationMenuTrigger>{item.label}</NavigationMenuTrigger>
+                      <NavigationMenuTrigger
+                        className={cn(
+                          'font-mono-tight text-sm bg-transparent rounded-sm font-normal',
+                          item.items.some((sub) => pathname === sub.to)
+                            ? 'text-primary'
+                            : 'text-muted-foreground',
+                        )}
+                      >
+                        /{item.label.toLowerCase()}
+                      </NavigationMenuTrigger>
                       <NavigationMenuContent>
                         <ul className="grid w-[300px] gap-2 p-4">
                           {item.items.map((sub) => (
@@ -90,9 +91,9 @@ export default function PortfolioHeader() {
                               <NavigationMenuLink asChild>
                                 <Link
                                   href={sub.to}
-                                  className="block select-none space-y-1 rounded-md p-3 hover:bg-accent hover:text-accent-foreground transition-colors"
+                                  className="block select-none space-y-1 rounded-sm p-3 hover:bg-accent hover:text-accent-foreground transition-colors"
                                 >
-                                  <div className="text-sm font-medium">{sub.label}</div>
+                                  <div className="text-sm font-mono-tight">{sub.label}</div>
                                   <p className="text-xs text-muted-foreground">{sub.description}</p>
                                 </Link>
                               </NavigationMenuLink>
@@ -107,10 +108,11 @@ export default function PortfolioHeader() {
                         href={item.to}
                         className={cn(
                           navigationMenuTriggerStyle(),
-                          pathname === item.to && 'text-primary font-semibold',
+                          'font-mono-tight text-sm bg-transparent rounded-sm',
+                          pathname === item.to ? 'text-primary' : 'text-muted-foreground',
                         )}
                       >
-                        {item.label}
+                        /{item.label.toLowerCase()}
                       </Link>
                     </NavigationMenuLink>
                   )}
@@ -146,7 +148,7 @@ export default function PortfolioHeader() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-72">
-              <SheetTitle>ABDOULAYE</SheetTitle>
+              <SheetTitle className="font-mono-tight"><span className="text-primary">~</span>/abdoulaye</SheetTitle>
               <SheetDescription className="sr-only">Navigation menu</SheetDescription>
               <nav className="flex flex-col gap-2 mt-6">
                 {navItems.map((item) => (
@@ -155,11 +157,11 @@ export default function PortfolioHeader() {
                     href={item.to}
                     onClick={() => setMobileMenuOpen(false)}
                     className={cn(
-                      'px-4 py-2 rounded-md text-sm font-medium hover:bg-accent transition-colors',
-                      pathname === item.to && 'bg-accent text-primary',
+                      'px-4 py-2 rounded-sm font-mono-tight text-sm hover:bg-accent transition-colors',
+                      pathname === item.to ? 'text-primary' : 'text-muted-foreground',
                     )}
                   >
-                    {item.label}
+                    /{item.label.toLowerCase()}
                   </Link>
                 ))}
                 <div className="pt-2 border-t mt-2">

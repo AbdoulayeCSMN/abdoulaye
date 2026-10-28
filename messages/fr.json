@@ -10,14 +10,14 @@
   },
   "home": {
     "greeting": "Bonjour, je suis",
-    "tagline": "Développeur passionné, créateur d'expériences web modernes et élégantes. J'aime transformer des idées en projets utiles, performants et intelligents.",
+    "tagline": "Élève-ingénieur en IA & Technologies de Données. Je conçois des modèles de machine learning et les expose via des API, du prototype au service déployable.",
     "cta_projects": "Voir mes projets",
     "cta_contact": "Me contacter",
-    "about_text": "Je suis un développeur polyvalent spécialisé en Next.js, React, Node.js, Python, R et les interfaces modernes. J'adore concevoir des expériences utilisateur fluides et intégrer l'IA dans des projets concrets."
+    "about_text": "Élève-ingénieur en 5ᵉ et dernière année (IATD-SI, ENSAM Meknès). Machine learning, MLOps et développement full-stack : prédiction, détection d’anomalies, recommandation, apprentissage par renforcement et NLP. Je cherche un stage de fin d’études à partir de février 2027."
   },
   "projects": {
     "title": "Mes Réalisations",
-    "subtitle": "Découvrez une sélection de projets sur lesquels j'ai travaillé, allant de solutions web complètes à des applications innovantes.",
+    "subtitle": "Découvrez une sélection de projets sur lesquels j'ai travaillé, allant de solutions web complètes à des applications d’intelligence artificielle et de data science.",
     "badge": "Portfolio Projets",
     "filter_all": "Tous",
     "filter_featured": "En vedette",
@@ -32,15 +32,13 @@
     "btn_code": "Code",
     "btn_visit": "Voir le projet",
     "btn_details": "Détails",
-    "stats_completed": "Projets complétés",
-    "stats_experience": "Années d'expérience",
-    "stats_clients": "Clients satisfaits",
-    "stats_technologies": "Technologies maîtrisées",
-    "no_projects": "Aucun projet dans cette catégorie pour le moment."
+    "stats_completed": "Projets présentés",
+    "no_projects": "Aucun projet dans cette catégorie pour le moment.",
+    "stats_in_progress": "Projets en cours"
   },
   "contact": {
     "title": "Contactez-moi",
-    "subtitle": "Un projet en tête ? Parlons-en.",
+    "subtitle": "Un projet en tête ? Un stage en Machine Learning ou MLOps ? Parlons-en.",
     "name": "Nom complet",
     "email": "Adresse email",
     "phone": "Téléphone",
@@ -51,7 +49,7 @@
     "error": "Une erreur est survenue. Réessayez."
   },
   "footer": {
-    "tagline": "Créons ensemble quelque chose d'extraordinaire",
+    "tagline": "Créons ensemble des solutions d’IA utiles et robustes",
     "quick_links": "Liens rapides",
     "services_label": "Services",
     "contact_label": "Contact",

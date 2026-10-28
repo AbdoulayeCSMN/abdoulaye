@@ -17,18 +17,8 @@ export default function PortfolioFooter() {
   const quickLinks = [
     { label: tn('home'),     to: href('/') },
     { label: tn('projects'), to: href('/projects') },
-    { label: tn('services'), to: href('/services') },
     { label: tn('about'),    to: href('/about') },
-    { label: tn('blog'),     to: href('/blog') },
     { label: tn('contact'),  to: href('/contact') },
-  ];
-
-  const services = [
-    'Développement Web',
-    'Design UI/UX',
-    'Applications Mobile',
-    'Consulting Tech',
-    'SEO & Performance',
   ];
 
   const socialLinks = [
@@ -41,18 +31,15 @@ export default function PortfolioFooter() {
   return (
     <footer className="bg-background border-t mt-auto">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
           {/* Brand */}
           <div className="space-y-4">
-            <Link href={href('/')} className="flex items-center space-x-2 group">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-                <span className="text-primary-foreground font-bold text-lg">A</span>
-              </div>
-              <div>
-                <span className="text-xl font-bold">ABDOULAYE</span>
-                <p className="text-sm text-muted-foreground mt-1">{t('tagline')}</p>
-              </div>
+            <Link href={href('/')} className="inline-block group">
+              <span className="font-mono-tight text-base text-muted-foreground group-hover:text-primary transition-colors">
+                <span className="text-primary">~</span>/abdoulaye
+              </span>
+              <p className="text-sm text-muted-foreground mt-2 max-w-xs">{t('tagline')}</p>
             </Link>
             <div className="space-y-2.5">
               <div className="flex items-center space-x-3">
@@ -88,20 +75,6 @@ export default function PortfolioFooter() {
             </ul>
           </div>
 
-          {/* Services */}
-          <div>
-            <h4 className="font-semibold text-lg mb-4">{t('services_label')}</h4>
-            <ul className="space-y-2">
-              {services.map((s) => (
-                <li key={s}>
-                  <Link href={href('/services')} className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    {s}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* Social */}
           <div>
             <h4 className="font-semibold text-lg mb-4">Réseaux sociaux</h4>
@@ -112,7 +85,7 @@ export default function PortfolioFooter() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-muted hover:bg-primary/10 p-2 rounded-full transition-colors"
+                  className="bg-muted hover:bg-primary/10 hover:text-primary p-2 rounded-sm transition-colors"
                   aria-label={social.platform}
                 >
                   {social.icon}
@@ -126,7 +99,7 @@ export default function PortfolioFooter() {
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} ABDOULAYE. {t('rights')}.
+            © {new Date().getFullYear()} Chaibou Abdoulaye. {t('rights')}.
           </p>
 
           <Button

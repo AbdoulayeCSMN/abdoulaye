@@ -5,15 +5,18 @@ import { usePathname, useRouter } from 'next/navigation';
 import { Button } from '@components/ui/button';
 import { cn } from '@lib/utils';
 import {
-  LayoutDashboard,
   FolderKanban,
   BookOpen,
   MessageSquare,
+  UserRound,
+  FileText,
   LogOut,
 } from 'lucide-react';
 
 const navItems = [
   { href: '/admin/projects', label: 'Projets', icon: FolderKanban },
+  { href: '/admin/profile', label: 'Profil', icon: UserRound },
+  { href: '/admin/documents', label: 'CV', icon: FileText },
   { href: '/admin/courses', label: 'Cours', icon: BookOpen },
   { href: '/admin/messages', label: 'Messages', icon: MessageSquare },
 ];

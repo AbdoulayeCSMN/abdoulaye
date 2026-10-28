@@ -4,19 +4,25 @@
 -- Run after app/schema.sql has been applied.
 -- ============================================================
 
+-- VendorShield was renamed to Avilyre — migrate the slug on existing rows
+-- so the INSERT ... ON CONFLICT below updates it in place instead of
+-- leaving a stale 'vendorshield' row behind.
+UPDATE projects SET slug = 'avilyre', title = 'Avilyre', updated_at = CURRENT_TIMESTAMP
+  WHERE slug = 'vendorshield';
+
 INSERT INTO projects
   (title, slug, description, category, technologies, github_url, live_url,
    is_featured, is_published, year, status, sort_order)
 VALUES
 (
-  'VendorShield',
-  'vendorshield',
-  'Plateforme SaaS B2B qui aide les directions achats et supply chain a noter, surveiller et anticiper les risques de leur portefeuille fournisseurs : sante financiere, performance operationnelle, risques geopolitiques, ESG, cyber et climatiques, avec notation ponderee sur 24 criteres et predictions ML (defaillance, retards de livraison).',
+  'Avilyre',
+  'avilyre',
+  'Plateforme SaaS B2B qui aide les directions achats et supply chain a noter, surveiller et anticiper les risques de leur portefeuille fournisseurs : sante financiere, performance operationnelle, risques geopolitiques, ESG, cyber et climatiques, avec notation ponderee sur 24 criteres, predictions ML (defaillance, retards de livraison) et une IA agentique. Positionnee sur le segment mid-market industriel francophone/ouest-africain, avec support i18n hausa.',
   'fullstack',
   ARRAY['Next.js 15','React 19','TailwindCSS','Supabase','PostgreSQL','FastAPI','Python','MLflow','Groq','Claude','Turborepo'],
   'https://github.com/AbdoulayeCSMN/vendorshield',
-  'https://vendorshield-nine.vercel.app',
-  true, true, '2026', 'live', 1
+  NULL,
+  true, true, '2026', 'in_progress', 1
 ),
 (
   'AVIEN',

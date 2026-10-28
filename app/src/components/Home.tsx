@@ -7,58 +7,82 @@ import Link from 'next/link';
 import { useTranslations, useLocale } from '@lib/i18n';
 
 export default function Home() {
-  const t  = useTranslations('home');
+  const t = useTranslations('home');
   const locale = useLocale();
   const href = (path: string) => `/${locale}${path}`;
 
   return (
-    <main className="min-h-screen w-full bg-linear-to-br from-slate-100 via-slate-200 to-slate-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 px-6 md:px-16 py-24 flex flex-col gap-32">
+    <main className="min-h-screen w-full px-6 md:px-16 pt-32 pb-24 flex flex-col gap-24">
 
       {/* Hero */}
-      <section className="flex flex-col md:flex-row items-center justify-between gap-12">
+      <section className="grid md:grid-cols-[1fr_auto] gap-12 items-start max-w-5xl">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="max-w-2xl"
+          transition={{ duration: 0.5 }}
         >
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4 text-slate-900 dark:text-slate-100">
-            {t('greeting')} <span className="text-indigo-500">Abdoulaye</span>
+          <p className="path-label mb-4">~/home</p>
+
+          <h1 className="text-4xl md:text-6xl font-semibold leading-[1.1] tracking-tight mb-6 max-w-2xl">
+            {t('greeting')} <span className="text-primary">Abdoulaye</span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-8">
+
+          <p className="text-lg text-muted-foreground max-w-xl leading-relaxed mb-10">
             {t('tagline')}
           </p>
-          <div className="flex items-center gap-4 flex-wrap">
-            <Button asChild className="rounded-2xl px-6 py-5 text-lg font-semibold shadow-xl">
+
+          <div className="flex items-center gap-3 flex-wrap">
+            <Button asChild className="rounded-sm px-5 h-11 font-mono-tight text-sm">
               <Link href={href('/projects')}>{t('cta_projects')}</Link>
             </Button>
-            <Button asChild variant="outline" className="rounded-2xl px-6 py-5 text-lg font-semibold">
+            <Button asChild variant="outline" className="rounded-sm px-5 h-11 font-mono-tight text-sm border-border">
               <Link href={href('/contact')}>
-                {t('cta_contact')} <ArrowRight className="ml-2 h-5 w-5" />
+                {t('cta_contact')} <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>
         </motion.div>
+
+        {/* Fact block — replaces the decorative gradient blob with actual signal */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7 }}
-          className="w-full md:w-1/3 flex justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="w-full md:w-72 border border-border rounded-md bg-card font-mono-tight text-sm"
         >
-          <div className="w-64 h-64 rounded-full bg-linear-to-tr from-indigo-500 to-purple-600 shadow-2xl" />
+          <div className="flex items-center gap-1.5 px-4 py-3 border-b border-border">
+            <span className="h-2 w-2 rounded-full bg-destructive/70" />
+            <span className="h-2 w-2 rounded-full bg-accent/70" />
+            <span className="h-2 w-2 rounded-full bg-primary/70" />
+            <span className="ml-2 text-xs text-muted-foreground">whoami.txt</span>
+          </div>
+          <dl className="px-4 py-4 flex flex-col gap-3 text-xs">
+            <div className="flex justify-between gap-4">
+              <dt className="text-muted-foreground">role</dt>
+              <dd className="text-right">AI &amp; Data Eng.</dd>
+            </div>
+            <div className="flex justify-between gap-4">
+              <dt className="text-muted-foreground">school</dt>
+              <dd className="text-right">ENSAM Meknès</dd>
+            </div>
+            <div className="flex justify-between gap-4">
+              <dt className="text-muted-foreground">stack</dt>
+              <dd className="text-right">Python · C++ · Rust</dd>
+            </div>
+            <div className="flex justify-between gap-4">
+              <dt className="text-muted-foreground">status</dt>
+              <dd className="text-right text-accent">open to internship</dd>
+            </div>
+          </dl>
         </motion.div>
       </section>
 
       {/* About snippet */}
-      <section className="max-w-3xl mx-auto text-center">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed"
-        >
+      <section className="max-w-2xl border-l-2 border-primary pl-6">
+        <p className="path-label mb-3">~/about</p>
+        <p className="text-base text-muted-foreground leading-relaxed">
           {t('about_text')}
-        </motion.p>
+        </p>
       </section>
     </main>
   );

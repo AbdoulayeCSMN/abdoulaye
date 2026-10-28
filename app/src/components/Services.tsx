@@ -2,7 +2,6 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@components/ui/button"
 import { Badge } from "@components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@components/ui/tabs"
-import Link from "next/link";
 import {
   Code,
   Palette,
@@ -15,7 +14,6 @@ import {
   CheckCircle,
   ArrowRight,
   Shield,
-  TrendingUp,
   BarChart,
   Target,
   Brain,
@@ -36,7 +34,6 @@ const services = [
     ],
     price: "Sur devis",
     popular: true,
-    color: "from-violet-500 to-indigo-500",
   },
   {
     id: 2,
@@ -52,7 +49,6 @@ const services = [
     ],
     price: "Sur devis",
     popular: false,
-    color: "from-blue-500 to-cyan-500",
   },
   {
     id: 3,
@@ -68,7 +64,6 @@ const services = [
     ],
     price: "Sur devis",
     popular: false,
-    color: "from-purple-500 to-pink-500",
   },
   {
     id: 4,
@@ -84,7 +79,6 @@ const services = [
     ],
     price: "Sur devis",
     popular: false,
-    color: "from-green-500 to-emerald-500",
   },
   {
     id: 5,
@@ -100,7 +94,6 @@ const services = [
     ],
     price: "Sur devis",
     popular: false,
-    color: "from-orange-500 to-red-500",
   },
   {
     id: 6,
@@ -116,7 +109,6 @@ const services = [
     ],
     price: "Sur devis",
     popular: false,
-    color: "from-yellow-500 to-amber-500",
   },
   {
     id: 7,
@@ -132,7 +124,6 @@ const services = [
     ],
     price: "Sur devis",
     popular: false,
-    color: "from-indigo-500 to-blue-500",
   },
 ]
 
@@ -171,16 +162,13 @@ const processSteps = [
 
 export default function Services() {
   return (
-    <div className="min-h-screen bg-linear-to-b from-background to-muted/10">
+    <div className="min-h-screen">
       <div className="container mx-auto px-4 py-16">
         {/* Hero Section */}
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-6">
-            <Zap className="h-4 w-4" />
-            <span className="text-sm font-medium">Services Professionnels</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Solutions Digitales Sur Mesure
+        <div className="mb-16 max-w-2xl">
+          <p className="path-label mb-3">~/services</p>
+          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4">
+            Solutions digitales sur mesure
           </h1>
           <p className="text-lg text-muted-foreground">
             Des services complets pour transformer vos idées en produits digitaux performants 
@@ -193,23 +181,21 @@ export default function Services() {
           {services.map((service) => (
             <Card
               key={service.id}
-              className={`group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 ${
-                service.popular ? "border-2 border-primary" : ""
+              className={`group rounded-md hover:border-primary/60 transition-colors duration-200 relative ${
+                service.popular ? "border-primary" : "border-border"
               }`}
             >
               {service.popular && (
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <Badge className="bg-primary text-primary-foreground">
+                  <Badge className="bg-primary text-primary-foreground rounded-sm">
                     Populaire
                   </Badge>
                 </div>
               )}
               
               <CardHeader>
-                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-linear-to-br ${service.color} mb-4`}>
-                  <div className="text-white">
-                    {service.icon}
-                  </div>
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-sm border border-border mb-4 text-primary">
+                  {service.icon}
                 </div>
                 <CardTitle className="text-xl group-hover:text-primary transition-colors">
                   {service.title}
@@ -223,19 +209,19 @@ export default function Services() {
                 <div className="space-y-2">
                   {service.features.map((feature, index) => (
                     <div key={index} className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <CheckCircle className="h-4 w-4 text-accent" />
                       <span className="text-sm">{feature}</span>
                     </div>
                   ))}
                 </div>
                 
                 <div className="pt-4">
-                  <div className="text-2xl font-bold">{service.price}</div>
+                  <div className="text-xl font-mono-tight">{service.price}</div>
                 </div>
               </CardContent>
               
               <CardFooter>
-                <Button className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <Button className="w-full rounded-sm">
                   Discuter du projet
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
@@ -245,59 +231,27 @@ export default function Services() {
         </div>
 
         {/* Processus */}
-        <div className="mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Mon Processus de Travail</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Une méthodologie éprouvée pour garantir la réussite de votre projet.
-            </p>
-          </div>
+        <div className="mb-16 max-w-3xl">
+          <p className="path-label mb-3">~/services/process</p>
+          <h2 className="text-2xl font-semibold tracking-tight mb-10">Processus de travail</h2>
 
-          <div className="relative">
-            {/* Timeline */}
-            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-primary via-primary/50 to-primary transform md:-translate-x-1/2" />
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-0">
-              {processSteps.map((step, index) => (
-                <div
-                  key={step.step}
-                  className={`relative ${index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12 md:mt-16'}`}
-                >
-                  <div className={`absolute top-0 ${
-                    index % 2 === 0 
-                      ? 'md:right-0 md:transform md:translate-x-1/2' 
-                      : 'md:left-0 md:transform md:-translate-x-1/2'
-                  }`}>
-                    <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                      <div className="text-white font-bold">{step.step}</div>
-                    </div>
-                  </div>
-                  
-                  <Card className="border-2">
-                    <CardHeader>
-                      <div className="flex items-center gap-2 mb-2">
-                        <div className="text-primary">
-                          {step.icon}
-                        </div>
-                        <CardTitle className="text-xl">{step.title}</CardTitle>
-                      </div>
-                      <CardDescription>{step.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="text-sm text-muted-foreground">
-                        Phase {step.step} sur 5
-                      </div>
-                    </CardContent>
-                  </Card>
+          <div className="border-t border-border">
+            {processSteps.map((step) => (
+              <div key={step.step} className="flex gap-6 py-6 border-b border-border">
+                <span className="font-mono-tight text-sm text-muted-foreground w-6 pt-0.5">{step.step}</span>
+                <div className="text-primary pt-0.5">{step.icon}</div>
+                <div>
+                  <h3 className="font-semibold mb-1">{step.title}</h3>
+                  <p className="text-sm text-muted-foreground">{step.description}</p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
 
         {/* Tabs pour les détails supplémentaires */}
         <Tabs defaultValue="methodology" className="mb-16">
-          <TabsList className="grid grid-cols-3 mb-8">
+          <TabsList className="grid grid-cols-3 mb-8 rounded-sm">
             <TabsTrigger value="methodology">Méthodologie</TabsTrigger>
             <TabsTrigger value="technologies">Technologies</TabsTrigger>
             <TabsTrigger value="faq">FAQ</TabsTrigger>
@@ -313,30 +267,24 @@ export default function Services() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="text-center p-6 bg-muted/30 rounded-lg">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
-                      <Users className="h-6 w-6 text-primary" />
-                    </div>
+                  <div className="p-6 border border-border rounded-sm">
+                    <Users className="h-5 w-5 text-primary mb-4" />
                     <h4 className="font-semibold mb-2">Collaboration</h4>
                     <p className="text-sm text-muted-foreground">
                       Communication transparente et revues régulières
                     </p>
                   </div>
                   
-                  <div className="text-center p-6 bg-muted/30 rounded-lg">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
-                      <Zap className="h-6 w-6 text-primary" />
-                    </div>
+                  <div className="p-6 border border-border rounded-sm">
+                    <Zap className="h-5 w-5 text-primary mb-4" />
                     <h4 className="font-semibold mb-2">Agilité</h4>
                     <p className="text-sm text-muted-foreground">
                       Itérations rapides et adaptation aux changements
                     </p>
                   </div>
                   
-                  <div className="text-center p-6 bg-muted/30 rounded-lg">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
-                      <BarChart className="h-6 w-6 text-primary" />
-                    </div>
+                  <div className="p-6 border border-border rounded-sm">
+                    <BarChart className="h-5 w-5 text-primary mb-4" />
                     <h4 className="font-semibold mb-2">Qualité</h4>
                     <p className="text-sm text-muted-foreground">
                       Tests automatisés et revues de code rigoureuses
@@ -367,7 +315,7 @@ export default function Services() {
                     { name: "Docker", category: "DevOps" },
                     { name: "AWS", category: "Cloud" },
                   ].map((tech) => (
-                    <div key={tech.name} className="text-center p-4 border rounded-lg">
+                    <div key={tech.name} className="p-4 border border-border rounded-sm">
                       <div className="font-semibold">{tech.name}</div>
                       <div className="text-xs text-muted-foreground">{tech.category}</div>
                     </div>
@@ -392,10 +340,6 @@ export default function Services() {
                     q: "Proposez-vous des solutions de maintenance ?",
                     a: "Oui, des contrats de maintenance mensuels ou annuels sont disponibles.",
                   },
-                  {
-                    q: "Travaillez-vous avec des entreprises internationales ?",
-                    a: "Absolument, je travaille avec des clients du monde entier, principalement en Europe et Amérique du Nord.",
-                  },
                 ].map((faq, i) => (
                   <div key={i} className="border-b pb-4 last:border-0">
                     <h4 className="font-semibold mb-2">{faq.q}</h4>
@@ -408,24 +352,23 @@ export default function Services() {
         </Tabs>
 
         {/* CTA Section */}
-        <Card className="bg-linear-to-br from-primary/10 to-primary/5 border-primary/20">
-          <CardContent className="p-12 text-center">
-            <h2 className="text-3xl font-bold mb-4">Prêt à démarrer votre projet ?</h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Discutons de votre projet et voyons comment je peux vous aider à atteindre vos objectifs.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg">
-                <Users className="mr-2 h-4 w-4" />
-                Discuter d&apos;un projet
-              </Button>
-              <Button size="lg" variant="outline">
-                <Clock className="mr-2 h-4 w-4" />
-                Réserver un appel
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+        <div className="border border-border rounded-md p-10 md:p-12">
+          <p className="path-label mb-3">~/contact</p>
+          <h2 className="text-2xl font-semibold tracking-tight mb-4">Prêt à démarrer votre projet ?</h2>
+          <p className="text-muted-foreground mb-8 max-w-xl">
+            Discutons de votre projet et voyons comment je peux vous aider à atteindre vos objectifs.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Button size="lg" className="rounded-sm">
+              <Users className="mr-2 h-4 w-4" />
+              Discuter d&apos;un projet
+            </Button>
+            <Button size="lg" variant="outline" className="rounded-sm">
+              <Clock className="mr-2 h-4 w-4" />
+              Réserver un appel
+            </Button>
+          </div>
+        </div>
       </div>
     </div>
   )

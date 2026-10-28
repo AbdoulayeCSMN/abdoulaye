@@ -9,7 +9,9 @@
     "lint": "eslint",
     "db:schema": "tsx scripts/run-sql.ts app/schema.sql",
     "db:seed:projects": "tsx scripts/run-sql.ts scripts/seed-projects.sql && tsx scripts/run-sql.ts scripts/seed-projects-batch2.sql",
-    "db:deploy": "npm run db:schema && npm run db:seed:projects"
+    "db:deploy": "npm run db:schema && npm run db:migrate:profile && npm run db:seed:projects",
+    "db:migrate:profile": "tsx scripts/run-sql.ts scripts/migrate-002-profile.sql && tsx scripts/run-sql.ts scripts/seed-profile.sql",
+    "db:import-cvs": "tsx scripts/import-cvs.ts cv_seed"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

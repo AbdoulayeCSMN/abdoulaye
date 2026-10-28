@@ -64,6 +64,16 @@ VALUES
   false, true, '2026', 'completed', 11
 ),
 (
+  'NASARA Central Market',
+  'nasara-cm',
+  'Application mobile de marche central virtualise pour les petits commerçants nigeriens : chacun cree et gere sa propre boutique, avec l''app comme intermediaire de confiance entre client et vendeur (via les systemes de transfert nigeriens) pour eviter le partage de numero de telephone. Pensee comme un vrai marche avec des boutiques plutot qu''une copie d''Amazon. Backend Go (Fiber) + PostgreSQL + Redis, stockage S3-compatible, messagerie WebSocket native. Testee avec succes sur telephone physique.',
+  'mobile',
+  ARRAY['Go','Fiber','PostgreSQL','Redis','WebSocket','React Native'],
+  NULL,
+  NULL,
+  true, true, '2026', 'in_progress', 18
+),
+(
   'TkLearn Studio',
   'tklearn-studio',
   'Application pedagogique de bureau (Tkinter) offrant un bac a sable pour apprendre l''interface graphique Python : editeur avec coloration syntaxique, previsualisation en temps reel, console integree et lecons structurees.',

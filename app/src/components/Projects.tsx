@@ -9,7 +9,7 @@ import { Tabs, TabsList, TabsTrigger } from '@components/ui/tabs';
 import { FaGithub } from 'react-icons/fa';
 import {
   ExternalLink, Eye, Code, Palette, Server,
-  Users, Calendar, Star, Grid, List, Zap, Smartphone,
+  Calendar, Star, Grid, List, Zap, Smartphone,
 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useTranslations } from '@lib/i18n';
@@ -30,18 +30,12 @@ interface Project {
   sort_order: number;
 }
 
-const COLOR_MAP: Record<string, string> = {
-  frontend:  'from-blue-500 to-cyan-500',
-  backend:   'from-green-500 to-emerald-500',
-  fullstack: 'from-indigo-500 to-purple-500',
-  mobile:    'from-orange-500 to-rose-500',
-  timesseries:    'from-orange-500 to-rose-500',
-  design:    'from-pink-500 to-fuchsia-500',
-  nlp:       'from-slate-500 to-slate-700',
-  cv:        'from-pink-500 to-fuchsia-500',
-  rl:        'from-pink-500 to-fuchsia-500',
-  resarch:   'from-pink-500 to-fuchsia-500',
-  other:     'from-slate-500 to-slate-700'
+// Category tags render as monospace labels, not decorative color blocks —
+// the accent lives in the border, everything else stays neutral.
+const CATEGORY_LABEL: Record<string, string> = {
+  frontend: 'frontend', backend: 'backend', fullstack: 'fullstack',
+  mobile: 'mobile', timesseries: 'time-series', design: 'design',
+  nlp: 'nlp', cv: 'vision', rl: 'rl', resarch: 'research', other: 'systems',
 };
 
 export default function ProjectsPage() {
@@ -76,25 +70,22 @@ export default function ProjectsPage() {
     : projects.filter((p) => p.category === activeCategory);
 
   const statusLabel = (status?: string) => {
-    if (status === 'live')        return `🌐 ${t('status_live')}`;
-    if (status === 'in_progress') return `🔧 ${t('status_in_progress')}`;
-    return `✅ ${t('status_completed')}`;
+    if (status === 'live')        return t('status_live');
+    if (status === 'in_progress') return t('status_in_progress');
+    return t('status_completed');
   };
 
-  const color = (category?: string) => COLOR_MAP[category ?? 'other'] ?? COLOR_MAP.other;
+  const catLabel = (category?: string) => CATEGORY_LABEL[category ?? 'other'] ?? 'systems';
 
   return (
-    <div className="min-h-screen bg-linear-to-b from-background to-muted/10">
+    <div className="min-h-screen">
       <div className="container mx-auto px-4 py-16">
 
         {/* Header */}
-        <div className="text-center mb-12 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-6">
-            <Code className="h-4 w-4" />
-            <span className="text-sm font-medium">{t('badge')}</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{t('title')}</h1>
-          <p className="text-lg text-muted-foreground">{t('subtitle')}</p>
+        <div className="mb-12 max-w-2xl">
+          <p className="path-label mb-3">~/projects</p>
+          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4">{t('title')}</h1>
+          <p className="text-base text-muted-foreground">{t('subtitle')}</p>
         </div>
 
         {/* Controls */}
@@ -148,30 +139,22 @@ export default function ProjectsPage() {
             {filtered.map((project) => (
               <Card
                 key={project.id}
-                className={`group hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/50 ${
-                  view === 'grid' ? 'flex flex-col hover:-translate-y-2' : 'flex'
+                className={`group rounded-md border-border hover:border-primary/60 transition-colors duration-200 ${
+                  view === 'grid' ? 'flex flex-col' : 'flex'
                 }`}
               >
                 {view === 'grid' ? (
                   <>
-                    <div className={`h-48 bg-linear-to-br ${color(project.category)} relative overflow-hidden rounded-t-lg`}>
-                      {project.cover_image && (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img src={project.cover_image} alt={project.title} className="absolute inset-0 w-full h-full object-cover opacity-60" />
-                      )}
-                      <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
-                      <div className="absolute top-4 right-4">
-                        <Badge variant={project.status === 'live' ? 'default' : 'secondary'}>
+                    <div className="px-6 pt-5 flex items-center justify-between gap-2">
+                      <span className="path-label">{catLabel(project.category)}</span>
+                      <div className="flex items-center gap-2">
+                        {project.is_featured && (
+                          <Star className="h-3.5 w-3.5 text-primary fill-primary" />
+                        )}
+                        <Badge variant={project.status === 'live' ? 'default' : 'secondary'} className="rounded-sm">
                           {statusLabel(project.status)}
                         </Badge>
                       </div>
-                      {project.is_featured && (
-                        <div className="absolute top-4 left-4">
-                          <Badge variant="outline" className="bg-background/80">
-                            <Star className="h-3 w-3 mr-1" /> Featured
-                          </Badge>
-                        </div>
-                      )}
                     </div>
 
                     <CardHeader className="flex-1">
@@ -224,15 +207,16 @@ export default function ProjectsPage() {
                   </>
                 ) : (
                   <>
-                    <div className={`w-40 bg-linear-to-br ${color(project.category)} hidden md:block rounded-l-lg flex-shrink-0`} />
+                    <div className="w-1.5 bg-primary/50 hidden md:block flex-shrink-0" />
                     <div className="flex-1">
                       <CardHeader>
                         <div className="flex items-center gap-3 mb-2 flex-wrap">
-                          <Badge variant={project.status === 'live' ? 'default' : 'secondary'}>
+                          <span className="path-label">{catLabel(project.category)}</span>
+                          <Badge variant={project.status === 'live' ? 'default' : 'secondary'} className="rounded-sm">
                             {statusLabel(project.status)}
                           </Badge>
                           {project.is_featured && (
-                            <Badge variant="outline"><Star className="h-3 w-3 mr-1" />Featured</Badge>
+                            <Badge variant="outline" className="rounded-sm"><Star className="h-3 w-3 mr-1" />Featured</Badge>
                           )}
                           {project.year && (
                             <span className="text-sm text-muted-foreground flex items-center gap-1">
@@ -276,39 +260,22 @@ export default function ProjectsPage() {
           </div>
         )}
 
-        {/* Stats */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
-          {[
-            { label: t('stats_completed'),    value: '18+', Icon: CheckCircle },
-            { label: t('stats_experience'),   value: '4+',  Icon: CalendarIcon },
-            { label: t('stats_clients'),      value: '4+',  Icon: UsersIcon },
-            { label: t('stats_technologies'), value: '25+', Icon: CodeIcon },
-          ].map(({ label, value, Icon }) => (
-            <Card key={label} className="text-center">
-              <CardContent className="p-6">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
-                  <Icon />
-                </div>
-                <div className="text-3xl font-bold mb-2">{value}</div>
+        {/* Stats : uniquement des chiffres vérifiables (compte réel en base) */}
+        {!loading && projects.length > 0 && (
+          <div className="mt-16 grid grid-cols-2 border-t border-l border-border">
+            {[
+              { label: t('stats_completed'), value: String(projects.length) },
+              { label: t('stats_in_progress'), value: String(projects.filter((p) => p.status === 'in_progress').length) },
+            ].map(({ label, value }) => (
+              <div key={label} className="border-r border-b border-border px-6 py-8">
+                <div className="text-3xl font-semibold font-mono-tight mb-2 text-primary">{value}</div>
                 <p className="text-sm text-muted-foreground">{label}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
 }
 
-function CheckCircle() {
-  return <svg className="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
-}
-function CalendarIcon() {
-  return <svg className="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>;
-}
-function UsersIcon() {
-  return <Users className="h-6 w-6 text-primary" />;
-}
-function CodeIcon() {
-  return <svg className="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>;
-}

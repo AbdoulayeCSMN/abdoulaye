@@ -11,7 +11,6 @@ import {
   FieldError,
   FieldGroup,
   FieldSet,
-  FieldContent,
   FieldTitle,
 } from "@components/ui/field"
 import {
@@ -27,7 +26,6 @@ import {
   User, 
   Mail, 
   Phone, 
-  MessageSquare, 
   Check, 
   Shield,
   AlertCircle,
@@ -210,11 +208,9 @@ export default function ContactForm({
   }
 
   return (
-    <Card className={`w-full max-w-2xl mx-auto shadow-lg border-border ${className}`}>
-      <CardHeader className="text-center">
-        <div className="mx-auto w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-          <MessageSquare className="h-6 w-6 text-primary" />
-        </div>
+    <Card className={`w-full max-w-2xl mx-auto rounded-md border-border ${className}`}>
+      <CardHeader>
+        <p className="path-label mx-auto mb-2">~/contact</p>
         <CardTitle className="text-2xl">{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
       </CardHeader>
@@ -325,7 +321,7 @@ export default function ContactForm({
 
           {/* Section reCAPTCHA (affichée uniquement si showCaptcha est true) */}
           {showCaptcha && (
-            <FieldSet className="bg-muted/30 p-4 rounded-lg border">
+            <FieldSet className="bg-muted/30 p-4 rounded-sm border border-border">
               <div className="flex items-center gap-2 mb-4">
                 <Shield className="h-5 w-5 text-primary" />
                 <FieldTitle>Vérification de sécurité</FieldTitle>
@@ -356,7 +352,7 @@ export default function ContactForm({
                     ? "bg-green-50 border-green-200 dark:bg-green-950/20 dark:border-green-800" 
                     : "bg-amber-50 border-amber-200 dark:bg-amber-950/20 dark:border-amber-800"
                 }`}>
-                  <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
+                  <div className={`shrink-0 w-8 h-8 rounded-sm flex items-center justify-center ${
                     recaptchaVerified 
                       ? "bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-400" 
                       : "bg-amber-100 text-amber-600 dark:bg-amber-900 dark:text-amber-400"
