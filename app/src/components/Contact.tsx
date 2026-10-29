@@ -43,6 +43,7 @@ const createContactSchema = (requireCaptcha: boolean) => {
     name: z.string().min(2, "Le nom doit contenir au moins 2 caractères"),
     email: z.string().email("Adresse email invalide"),
     phone: z.string().optional(),
+    website: z.string().optional(),
     subject: z.string().min(5, "Le sujet doit contenir au moins 5 caractères"),
     message: z.string().min(10, "Le message doit contenir au moins 10 caractères"),
     recaptchaToken: requireCaptcha
@@ -98,6 +99,7 @@ export default function ContactForm({
       name: "",
       email: "",
       phone: "",
+      website: "",
       subject: "",
       message: "",
       recaptchaToken: "",
@@ -151,23 +153,6 @@ export default function ContactForm({
     setFormStatus("idle")
 
     try {
-      // Vérification reCAPTCHA côté serveur (uniquement si activé)
-      if (showCaptcha) {
-        const recaptchaResponse = await fetch("/api/verify-recaptcha", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ recaptchaToken: data.recaptchaToken }),
-        })
-
-        const recaptchaResult = await recaptchaResponse.json()
-
-        if (!recaptchaResult.success) {
-          throw new Error("Échec de la vérification reCAPTCHA")
-        }
-      }
-      
       // Envoi des données
       const response = await fetch('/api/messages', {
         method: 'POST',
@@ -178,6 +163,9 @@ export default function ContactForm({
           phone: data.phone || null,
           subject: data.subject,
           message: data.message,
+          website: data.website ?? '',
+          locale: window.location.pathname.split('/')[1] === 'en' ? 'en' : 'fr',
+          recaptchaToken: showCaptcha ? data.recaptchaToken : undefined,
         }),
       })
 
@@ -217,6 +205,8 @@ export default function ContactForm({
       
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          {/* Champ piège anti-robots (invisible) */}
+          <input type="text" {...register("website")} tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 opacity-0" />
           <FieldSet>
             <FieldTitle>Informations personnelles</FieldTitle>
             <FieldDescription>

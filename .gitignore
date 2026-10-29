@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/non_commit
 /.pnp
 .pnp.*
 .claude
