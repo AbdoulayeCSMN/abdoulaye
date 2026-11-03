@@ -28,7 +28,7 @@ export async function sendContactMail(m: ContactMail): Promise<MailStatus> {
   const origin = process.env.NEXT_PUBLIC_SITE_URL || 'portfolio';
 
   const text = [
-    `Nouveau message reçu depuis ton portfolio (${origin}).`,
+    `Nouveau message reçu depuis mon portfolio (${origin}).`,
     '',
     `De : ${oneLine(m.nom)} <${oneLine(m.email)}>`,
     m.tel ? `Téléphone : ${oneLine(m.tel)}` : null,
@@ -38,12 +38,12 @@ export async function sendContactMail(m: ContactMail): Promise<MailStatus> {
     '',
     m.content,
     '',
-    '— Réponds directement à cet email : la réponse ira à l\'expéditeur.',
+    '',
   ].filter((l) => l !== null).join('\n');
 
   const html = `<div style="font-family:Arial,sans-serif;max-width:640px;line-height:1.5">
 <p style="background:#0f7b5f;color:#fff;padding:8px 12px;border-radius:4px;margin:0 0 12px">
-  Message reçu depuis ton <strong>portfolio</strong></p>
+  Message reçu depuis mon <strong>portfolio</strong></p>
 <table style="font-size:14px;border-collapse:collapse">
 <tr><td style="padding:2px 12px 2px 0;color:#666">De</td><td><strong>${esc(oneLine(m.nom))}</strong> &lt;<a href="mailto:${esc(oneLine(m.email))}">${esc(oneLine(m.email))}</a>&gt;</td></tr>
 ${m.tel ? `<tr><td style="padding:2px 12px 2px 0;color:#666">Téléphone</td><td>${esc(oneLine(m.tel))}</td></tr>` : ''}
@@ -52,7 +52,7 @@ ${m.tel ? `<tr><td style="padding:2px 12px 2px 0;color:#666">Téléphone</td><td
 ${m.locale ? `<tr><td style="padding:2px 12px 2px 0;color:#666">Langue</td><td>${esc(m.locale)}</td></tr>` : ''}
 </table>
 <div style="margin-top:14px;padding:12px;border:1px solid #ddd;border-radius:4px;white-space:pre-wrap">${esc(m.content)}</div>
-<p style="color:#888;font-size:12px">Réponds directement à cet email : la réponse ira à l'expéditeur.</p>
+<p style="color:#888;font-size:12px></p>
 </div>`;
 
   try {
